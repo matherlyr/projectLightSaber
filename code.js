@@ -25,10 +25,20 @@ dataPromise.then(
 //            })
 //    }
 
-var createTable = function(filmData)
+var createTable = function(filmData, class)
 {
         
-    var table = d3.select("tbody").selectAll("tr").data(filmData).enter().append("tr") 
+    var table = d3.select("tbody").selectAll("tr").data(filmData, class).enter().append("tr").attr("class", function(d){
+        if (d.director=="George Lucas")
+            {
+                return "GLMovie"
+            }
+        else{
+            
+            return "RegMovie"
+            
+        } 
+    })
     //table.append("td").append("img").attr("src", function(d){ return "penguins/" + d.picture;})
     table.append("td").text(function(d){ return d.title;})
     table.append("td").text(function(d){ return d.episode_id;})
@@ -42,7 +52,7 @@ var createTable = function(filmData)
                            {
                                getTitleList(filmData)
                                removeTable()
-                               createTable(filmData)
+                               createTable(filmData,class)
     
                             })
     
@@ -50,7 +60,7 @@ var createTable = function(filmData)
                             {
                                getNumberList(filmData)
                                removeTable()
-                               createTable(filmData)
+                               createTable(filmData, class)
     
                             })
     
@@ -58,7 +68,7 @@ var createTable = function(filmData)
                             {
                                getDirectorList(filmData)
                                removeTable()
-                               createTable(filmData)
+                               createTable(filmData, class)
     
                             })
     
@@ -66,15 +76,22 @@ var createTable = function(filmData)
                             {
                                getProducerList(filmData)
                                removeTable()
-                               createTable(filmData)
+                               createTable(filmData,class)
     
                             })
     d3.select("#datehead").on("click", function()
                             {
                                getDateList(filmData)
                                removeTable()
-                               createTable(filmData)
+                               createTable(filmData, class)
     
+                            })
+    d3.select("#George").on("click", function()
+                            {
+                                removeTable()
+                                createTable(filmData, "GLMovies")
+                                
+                                
                             })
      
 }
@@ -222,4 +239,22 @@ var compareDates =function(a,b)
 var getDateList =function(filmList)
     {
         filmList.sort(compareDates);
+    }
+
+//filtering movies
+
+var filterMovies= function(filmData, class)
+    {
+        if (class=="GLMovies")
+            {
+                return info.filter(function(filmData)
+                    {
+                        return info.director="George Lucas";                      
+                    })
+            }
+        else
+            {
+                return filmData;
+            }
+        
     }
