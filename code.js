@@ -94,6 +94,7 @@ var createTable = function(filmData)
                                 {
                                
                                    var GLTable=function(filmData){
+                                       filterMovies(filmData, class)
                                        
                                        d3.select("tbody").selectAll("tr").data(filmData).enter().append("tr") 
                                 GLTable.append("td").text(function(d){ return d.title;})
@@ -258,18 +259,18 @@ var getDateList =function(filmList)
 
 //filtering movies
 
-//var filterMovies= function(filmData, type)
-//    {
-//        if (type == "GLMovies")
-//            {
-//                return info.filter(function(filmData)
-//                    {
-//                        return info.director=="George Lucas";                      
-//                    })
-//            }
-//        else
-//            {
-//                return filmData;
-//            }
-//        
-//    }
+var filterMovies= function(filmData, class)
+   {
+       if (class == "GLMovies")
+           {
+               return info.filter(function(filmData)
+                   {
+                       return info.director=="George Lucas";                      
+                   })
+           }
+       else
+           {
+               return filmData;
+           }
+       
+   }
