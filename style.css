@@ -3,5 +3,13 @@ table {
 }
 
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid yellow;
+    background-color:black;
 }
+
+body{
+    background-image: url("NightSky.jpg");
+    color: yellow;
+    font-family:"Arial Black", Gadget, sans-serif;
+}
+

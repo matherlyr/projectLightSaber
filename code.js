@@ -6,6 +6,7 @@ dataPromise.then(
         console.log("filmData",filmData)
         //displayInfo(info);
         createTable(info);
+
     },
     function(error)
     {d3.select("h1").text("No movies.");
@@ -25,10 +26,10 @@ dataPromise.then(
 //            })
 //    }
 
-var createTable = function(filmData, class)
+var createTable = function(filmData)
 {
         
-    var table = d3.select("tbody").selectAll("tr").data(filmData, class).enter().append("tr").attr("class", function(d){
+    var table = d3.select("tbody").selectAll("tr").data(filmData).enter().append("tr").attr("class", function(d){
         if (d.director=="George Lucas")
             {
                 return "GLMovie"
@@ -52,7 +53,7 @@ var createTable = function(filmData, class)
                            {
                                getTitleList(filmData)
                                removeTable()
-                               createTable(filmData,class)
+                               createTable(filmData)
     
                             })
     
@@ -60,7 +61,7 @@ var createTable = function(filmData, class)
                             {
                                getNumberList(filmData)
                                removeTable()
-                               createTable(filmData, class)
+                               createTable(filmData)
     
                             })
     
@@ -68,7 +69,7 @@ var createTable = function(filmData, class)
                             {
                                getDirectorList(filmData)
                                removeTable()
-                               createTable(filmData, class)
+                               createTable(filmData)
     
                             })
     
@@ -76,20 +77,34 @@ var createTable = function(filmData, class)
                             {
                                getProducerList(filmData)
                                removeTable()
-                               createTable(filmData,class)
+                               createTable(filmData)
     
                             })
     d3.select("#datehead").on("click", function()
                             {
                                getDateList(filmData)
                                removeTable()
-                               createTable(filmData, class)
+                               createTable(filmData)
     
                             })
     d3.select("#George").on("click", function()
                             {
                                 removeTable()
-                                createTable(filmData, "GLMovies")
+                                if("class"=="GLMovie")
+                                {
+                               
+                                   var GLTable=function(filmData){
+                                       
+                                       d3.select("tbody").selectAll("tr").data(filmData).enter().append("tr") 
+                                GLTable.append("td").text(function(d){ return d.title;})
+                                GLTable.append("td").text(function(d){ return d.episode_id;})
+                                GLTable.append("td").text(function(d){ return d.director;})
+                                GLTable.append("td").text(function(d){ return d.producer;})
+                                GLTable.append("td").text(function(d){ return d.release_date;})
+                                }
+                                       
+                                   } 
+                                GLTable(filmData);
                                 
                                 
                             })
@@ -243,18 +258,18 @@ var getDateList =function(filmList)
 
 //filtering movies
 
-var filterMovies= function(filmData, class)
-    {
-        if (class=="GLMovies")
-            {
-                return info.filter(function(filmData)
-                    {
-                        return info.director="George Lucas";                      
-                    })
-            }
-        else
-            {
-                return filmData;
-            }
-        
-    }
+//var filterMovies= function(filmData, type)
+//    {
+//        if (type == "GLMovies")
+//            {
+//                return info.filter(function(filmData)
+//                    {
+//                        return info.director=="George Lucas";                      
+//                    })
+//            }
+//        else
+//            {
+//                return filmData;
+//            }
+//        
+//    }
