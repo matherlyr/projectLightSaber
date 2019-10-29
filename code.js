@@ -90,22 +90,22 @@ var createTable = function(filmData)
     d3.select("#George").on("click", function()
                             {
                                 removeTable()
-                                if("class"=="GLMovie")
+                                if("class"=="RegMovie")
                                 {
-                               
-                                   var GLTable=function(filmData){
-                                       filterMovies(filmData, class)
+                                    d3.select("tr *").remove()
+//                                    var GLTable=function(filmData){
+//                                        filterMovies(filmData, class)
                                        
-                                       d3.select("tbody").selectAll("tr").data(filmData).enter().append("tr") 
-                                GLTable.append("td").text(function(d){ return d.title;})
-                                GLTable.append("td").text(function(d){ return d.episode_id;})
-                                GLTable.append("td").text(function(d){ return d.director;})
-                                GLTable.append("td").text(function(d){ return d.producer;})
-                                GLTable.append("td").text(function(d){ return d.release_date;})
-                                }
+//                                        d3.select("tbody").selectAll("tr").data(filmData).enter().append("tr") 
+//                                 GLTable.append("td").text(function(d){ return d.title;})
+//                                 GLTable.append("td").text(function(d){ return d.episode_id;})
+//                                 GLTable.append("td").text(function(d){ return d.director;})
+//                                 GLTable.append("td").text(function(d){ return d.producer;})
+//                                 GLTable.append("td").text(function(d){ return d.release_date;})
+//                                 }
                                        
                                    } 
-                                GLTable(filmData);
+                                // GLTable(filmData);
                                 
                                 
                             })
