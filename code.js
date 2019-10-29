@@ -259,18 +259,18 @@ var getDateList =function(filmList)
 
 //filtering movies
 
-var filterMovies= function(filmData, class)
-   {
-       if (class == "GLMovies")
-           {
-               return info.filter(function(filmData)
-                   {
-                       return info.director=="George Lucas";                      
-                   })
-           }
-       else
-           {
-               return filmData;
-           }
+// var filterMovies= function(filmData, class)
+//    {
+//        if (class == "GLMovies")
+//            {
+//                return info.filter(function(filmData)
+//                    {
+//                        return info.director=="George Lucas";                      
+//                    })
+//            }
+//        else
+//            {
+//                return filmData;
+//            }
        
-   }
+//    }
