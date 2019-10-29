@@ -89,7 +89,7 @@ var createTable = function(filmData)
                             })
     d3.select("#George").on("click", function()
                             {
-                                removeTable()
+//                                 removeTable()
                                 if("class"=="RegMovie")
                                 {
                                     d3.select("tr *").remove()
