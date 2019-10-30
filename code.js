@@ -87,26 +87,21 @@ var createTable = function(filmData)
                                createTable(filmData)
     
                             })
+    d3.select("#All").on("click", function()
+                            {
+                                    removeTable()
+                                    console.log("hi")
+                                    console.log(filmData)
+                                    createTable(filmData)
+                                
+                            })
     d3.select("#George").on("click", function()
                             {
-//                                 removeTable()
-                                if("class"=="RegMovie")
-                                {
-                                    d3.select("tr *").remove()
-//                                    var GLTable=function(filmData){
-//                                        filterMovies(filmData, class)
-                                       
-//                                        d3.select("tbody").selectAll("tr").data(filmData).enter().append("tr") 
-//                                 GLTable.append("td").text(function(d){ return d.title;})
-//                                 GLTable.append("td").text(function(d){ return d.episode_id;})
-//                                 GLTable.append("td").text(function(d){ return d.director;})
-//                                 GLTable.append("td").text(function(d){ return d.producer;})
-//                                 GLTable.append("td").text(function(d){ return d.release_date;})
-//                                 }
-                                       
-                                   } 
-                                // GLTable(filmData);
-                                
+                                    console.log("hello")
+                                    var GLData= filterGLMovies(filmData)
+                                    console.log(GLData)
+                                    removeTable()
+                                    createTable(GLData)
                                 
                             })
      
@@ -119,6 +114,10 @@ var removeTable=function()
     .remove()
             
 }
+
+
+
+
 
 //For the Titles
 var getTitle= function(info)
@@ -259,18 +258,13 @@ var getDateList =function(filmList)
 
 //filtering movies
 
-// var filterMovies= function(filmData, class)
-//    {
-//        if (class == "GLMovies")
-//            {
-//                return info.filter(function(filmData)
-//                    {
-//                        return info.director=="George Lucas";                      
-//                    })
-//            }
-//        else
-//            {
-//                return filmData;
-//            }
-       
-//    }
+ var filterGLMovies= function(filmData)
+    { 
+       return filmData.filter(function(info)
+            {
+                if(info.director=="George Lucas")
+                    {return true}
+                else
+                    {return false}
+            })
+    }
