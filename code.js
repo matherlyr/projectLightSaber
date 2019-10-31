@@ -12,19 +12,6 @@ dataPromise.then(
     {d3.select("h1").text("No movies.");
     })
 
-//var displayInfo=function(filmData)
-//    {console.log(filmData)
-//        d3.select("#movieTitles")
-//        .append("ol")
-//        .selectAll("li")
-//        .data(filmData)
-//        .enter()
-//        .append("li")
-//        .text(function(d)
-//           {
-//            return d.title;  
-//            })
-//    }
 
 var createTable = function(filmData)
 {
@@ -37,10 +24,8 @@ var createTable = function(filmData)
         else{
             
             return "RegMovie"
-            
         } 
     })
-    //table.append("td").append("img").attr("src", function(d){ return "penguins/" + d.picture;})
     table.append("td").text(function(d){ return d.title;})
     table.append("td").text(function(d){ return d.episode_id;})
     table.append("td").text(function(d){ return d.director;})
@@ -99,7 +84,7 @@ var createTable = function(filmData)
                             {
                                     console.log("hello")
                                     var GLData= filterGLMovies(filmData)
-                                    console.log(GLData)
+                                    console.log(filmData)
                                     removeTable()
                                     createTable(GLData)
                                 
@@ -260,11 +245,12 @@ var getDateList =function(filmList)
 
  var filterGLMovies= function(filmData)
     { 
-       return filmData.filter(function(info)
+        var GLFilter=filmData.filter(function(info)
             {
                 if(info.director=="George Lucas")
                     {return true}
                 else
                     {return false}
             })
+        return GLFilter
     }
